@@ -9,11 +9,15 @@ export const scope = 'boilerplate.components.Header';
 
 export default defineMessages({
   home: {
-    id: `${scope}.home`,
-    defaultMessage: 'Home',
+    id: `${scope}.Albus`,
+    defaultMessage: 'Albus',
   },
   features: {
-    id: `${scope}.features`,
-    defaultMessage: 'Features',
+    id: `${scope}.halliffane`,
+    defaultMessage: 'Hall of Fame',
+  },
+  campaigns: {
+    id: `${scope}.campaigns`,
+    defaultMessage: 'Campaigns',
   },
 });
