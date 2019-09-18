@@ -1,13 +1,19 @@
-import { defaultAction } from '../actions';
-import { DEFAULT_ACTION } from '../constants';
+import { loadInfluencer } from '../actions';
+
+import { LOAD_INFLUENCER } from '../constants';
 
 describe('Campaigns actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
-      const expected = {
-        type: DEFAULT_ACTION,
+  describe('Load Influencer', () => {
+    it('should return the correct Influencer', () => {
+      const fixture = {
+        firsttName: 'Max',
+        lastName: 'Maxx',
       };
-      expect(defaultAction()).toEqual(expected);
+      const expectedResult = {
+        type: LOAD_INFLUENCER,
+        Influencer: fixture,
+      };
+      expect(loadInfluencer()).toEqual(expectedResult);
     });
   });
 });
