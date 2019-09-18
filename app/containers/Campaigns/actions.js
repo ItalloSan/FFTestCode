@@ -11,6 +11,7 @@ import {
 } from './constants';
 
 export function loadInfluencer() {
+  console.log('foo');
   return {
     type: LOAD_INFLUENCER,
   };
