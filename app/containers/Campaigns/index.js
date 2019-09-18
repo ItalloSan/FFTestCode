@@ -4,7 +4,7 @@
  *
  */
 
-import React from 'react';
+import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
@@ -14,7 +14,7 @@ import { createStructuredSelector } from 'reselect';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import { compose } from 'redux';
-import { makeSelectLoadInfluencer } from '../App/selectors';
+import { makeSelectLoadInfluencer } from './selectors';
 import { loadInfluencer } from './actions';
 import Form from './Form';
 import Input from './Input';
@@ -23,9 +23,15 @@ import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
 
+
 export function Campaigns({ influencer, onSubmitForm, onChangeUsername }) {
   useInjectReducer({ key: 'campaigns', reducer });
   useInjectSaga({ key: 'campaigns', saga });
+
+  useEffect(() => {
+    // When initial state username is not null, submit the form to load repos
+    if (influencer && influencer.firstName.trim().length > 0) onSubmitForm();
+  }, []);
 
   return (
     <div>
@@ -46,6 +52,12 @@ export function Campaigns({ influencer, onSubmitForm, onChangeUsername }) {
           />
         </label>
       </Form>
+      <div>{influencer && 
+          <span>
+            {influencer.firstName} {influencer.lastName}
+          </span>
+        )}
+      </div>
     </div>
   );
 }
@@ -57,7 +69,7 @@ Campaigns.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  campaigns: makeSelectLoadInfluencer(),
+  influencer: makeSelectLoadInfluencer(),
   // loading: makeSelectLoading(),
   // error: makeSelectError(),
 });

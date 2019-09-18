@@ -38,13 +38,13 @@ const makeSelectLocation = () =>
     selectRouter,
     routerState => routerState.location,
   );
-
+/*
 const makeSelectLoadInfluencer = () =>
   createSelector(
     selectRouter,
     routerState => routerState.influencer,
   );
-
+*/
 export {
   selectGlobal,
   makeSelectCurrentUser,
@@ -52,5 +52,5 @@ export {
   makeSelectError,
   makeSelectRepos,
   makeSelectLocation,
-  makeSelectLoadInfluencer,
+  // makeSelectLoadInfluencer,
 };

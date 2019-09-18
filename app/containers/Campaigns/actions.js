@@ -11,13 +11,13 @@ import {
 } from './constants';
 
 export function loadInfluencer() {
-  console.log('foo');
   return {
     type: LOAD_INFLUENCER,
   };
 }
 
 export function influencerLoaded(influencer) {
+  console.log('bar', influencer);
   return {
     type: LOAD_INFLUENCER_SUCCESS,
     influencer,

@@ -11,21 +11,25 @@ import {
 } from './constants';
 
 export const initialState = {
-  influencer: {},
+  loading: false,
+  error: false,
+  influencer: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
 const campaignsReducer = (state = initialState, action) =>
+  
   produce(state, draft => {
     switch (action.type) {
       case LOAD_INFLUENCER:
         draft.loading = true;
         draft.error = false;
-        draft.userData.influencer = false;
+        draft.influencer = false;
         break;
 
       case LOAD_INFLUENCER_SUCCESS:
-        draft.userData.influencer = action.influencer;
+        //console.log('action', action);
+        draft.influencer = action.influencer;
         draft.loading = false;
         break;
 
