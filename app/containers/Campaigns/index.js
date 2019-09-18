@@ -30,7 +30,7 @@ export function Campaigns({ influencer, onSubmitForm, onChangeUsername }) {
 
   useEffect(() => {
     // When initial state username is not null, submit the form to load repos
-    if (influencer && influencer.firstName.trim().length > 0) onSubmitForm();
+    if (!influencer) onSubmitForm();
   }, []);
 
   return (
@@ -52,11 +52,12 @@ export function Campaigns({ influencer, onSubmitForm, onChangeUsername }) {
           />
         </label>
       </Form>
-      <div>{influencer && 
+      <div>
+      {influencer && 
           <span>
             {influencer.firstName} {influencer.lastName}
           </span>
-        )}
+      }
       </div>
     </div>
   );
