@@ -51,7 +51,6 @@ export function Campaigns({ influencer, onSubmitForm, onChangeUsername }) {
 }
 
 Campaigns.propTypes = {
-  
   influencer: PropTypes.oneOfType([PropTypes.object, PropTypes.bool]),
   onSubmitForm: PropTypes.func,
   onChangeUsername: PropTypes.func,
