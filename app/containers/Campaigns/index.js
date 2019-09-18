@@ -14,7 +14,8 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import makeSelectCampaigns from './selectors';
+import { makeSelectLoadInfluencer } from '../App/selectors';
+
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
@@ -39,7 +40,7 @@ Campaigns.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  campaigns: makeSelectCampaigns(),
+  campaigns: makeSelectLoadInfluencer(),
 });
 
 function mapDispatchToProps(dispatch) {
