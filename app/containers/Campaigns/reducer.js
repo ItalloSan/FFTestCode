@@ -1,29 +1,39 @@
 /*
- * HomeReducer
  *
- * The reducer takes care of our data. Using actions, we can
- * update our application state. To add a new action,
- * add it to the switch statement in the reducer function
+ * Campaigns reducer
  *
  */
-
 import produce from 'immer';
-import { CHANGE_USERNAME } from './constants';
+import {
+  LOAD_INFLUENCER,
+  LOAD_INFLUENCER_SUCCESS,
+  LOAD_INFLUENCER_FAILURE,
+} from './constants';
 
-// The initial state of the App
 export const initialState = {
-  username: '',
+  influencer: {},
 };
 
 /* eslint-disable default-case, no-param-reassign */
-const homeReducer = (state = initialState, action) =>
+const campaignsReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
-      case CHANGE_USERNAME:
-        // Delete prefixed '@' from the github username
-        draft.username = action.username.replace(/@/gi, '');
+      case LOAD_INFLUENCER:
+        draft.loading = true;
+        draft.error = false;
+        draft.userData.influencer = false;
+        break;
+
+      case LOAD_INFLUENCER_SUCCESS:
+        draft.userData.influencer = action.influencer;
+        draft.loading = false;
+        break;
+
+      case LOAD_INFLUENCER_FAILURE:
+        draft.error = action.error;
+        draft.loading = false;
         break;
     }
   });
 
-export default homeReducer;
+export default campaignsReducer;
